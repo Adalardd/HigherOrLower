@@ -46,7 +46,7 @@ while True: # Несколько игр
                                         # из этого кол-ва карт.
         answer = input("Следующая карта будет больше или меньше чем " +
                         currentCardRank + " " + 
-                        currentCardSuit + "? (enter H or L): ")
+                        currentCardSuit + "? (enter h or l): ")
         answer = answer.casefold() # переводим в нижний регистр
         nextCardDict = getCard(gameDeckList)
         nextCardRank = nextCardDict["rank"]
@@ -54,7 +54,7 @@ while True: # Несколько игр
         nextCardValue = nextCardDict["value"]
         print("Следующая карта: ", nextCardRank, nextCardSuit)
 
-        if answer == "H":
+        if answer == "h":
             if nextCardValue > currentCardValue:
                 print("Верно. Поздравляю!")
                 score = score + 20
@@ -62,17 +62,20 @@ while True: # Несколько игр
                 print("Неверно. Потрачено 15 очков.")
                 score = score - 15
 
-        elif answer == "L":
+        elif answer == "l":
             if nextCardValue < currentCardValue:
                 score = score + 20
                 print("Верно. Поздравляю!")
+
             else:
                 score = score - 15
                 print("Неверно. Потрачено 15 очков.")
-            print("Ваш счёт:", score)
-            print()
-            currentCardRank = nextCardRank
-            carrentCardValue = nextCardValue # не нужна текущая масть
+                
+        print("Ваш счёт:", score)
+        print()
+        currentCardRank = nextCardRank
+        carrentCardValue = nextCardValue # не нужна текущая масть
+        currentCardSuit = nextCardSuit
 
     goAgain = input("Хотите сыграть еще? ENTER - да, если нет, то нажмите 'q': ")
     if goAgain == "q":
